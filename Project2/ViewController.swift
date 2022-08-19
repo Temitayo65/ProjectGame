@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         countries += ["estonia","ireland", "italy", "poland","russia","france","germany","monaco","nigeria","spain","uk","us"]
         setUI()
         askQuestion(action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(scoreTapped))
     }
     
     
@@ -93,7 +94,12 @@ class ViewController: UIViewController {
         
     }
     
-
+    @objc func scoreTapped(){
+        let scoreMessage: String = "Your current score is \(score)"
+        let vc = UIActivityViewController(activityItems: [scoreMessage], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
     
 
 }
